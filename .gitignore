@@ -2,7 +2,6 @@
 *.csproj
 /CLI/obj
 *.sln
-*.sln
 /CLI/bin
 /Entities/bin
 /Entities/obj
@@ -10,4 +9,7 @@
 /InMemoryRepositories/obj
 /RepositoryContracts/obj
 /RepositoryContracts/bin
+
+/bin/
+/obj/
 *.cache
