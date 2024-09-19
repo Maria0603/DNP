@@ -1,0 +1,15 @@
+
+*.csproj
+/CLI/obj
+*.sln
+/CLI/bin
+/Entities/bin
+/Entities/obj
+/InMemoryRepositories/bin
+/InMemoryRepositories/obj
+/RepositoryContracts/obj
+/RepositoryContracts/bin
+
+/bin/
+/obj/
+*.cache
