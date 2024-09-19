@@ -12,13 +12,13 @@ namespace InMemoryRepositories {
             items = initialData;
         }
 
-        public Task<T> AddAsync(T item) {
+        public virtual Task<T> AddAsync(T item) {
             item.Id = items.Any() ? items.Max(i => i.Id) + 1 : 1;
             items.Add(item);
             return Task.FromResult(item);
         }
 
-        public Task UpdateAsync(T item) {
+        public virtual Task UpdateAsync(T item) {
             var index = items.FindIndex(i => i.Id == item.Id);
             if (index == -1) {
                 throw new InvalidOperationException(
