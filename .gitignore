@@ -1,0 +1,6 @@
+
+*.csproj
+*.cache
+/CLI/obj
+*.sln
+*.sln
