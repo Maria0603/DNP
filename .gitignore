@@ -16,3 +16,7 @@ Assignment.sln
 /RepositoryContracts/bin
 /RepositoryContracts/obj
 /Entities/obj
+/InMemoryRepositories/obj/Debug
+/Entities/obj/Debug
+/Entities/obj/Debug/net8.0
+/InMemoryRepositories/obj/Debug/net8.0
