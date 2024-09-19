@@ -6,3 +6,13 @@
 *.sln
 Assignment.sln
 /CLI/bin
+/Entities/bin
+/Entities/obj
+/InMemoryRepositories/bin
+/InMemoryRepositories/obj
+/Entities/obj
+/Entities/obj
+/RepositoryContracts/obj
+/RepositoryContracts/bin
+/RepositoryContracts/obj
+/Entities/obj

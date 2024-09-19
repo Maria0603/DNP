@@ -34,7 +34,7 @@ public class CliApp(
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Create user");
             Console.WriteLine("2. List users");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("3. Back");
             var option = Console.ReadLine();
             switch (option) {
                 case "1":
@@ -60,7 +60,7 @@ public class CliApp(
             Console.WriteLine("1. List posts");
             Console.WriteLine("2. Add comment to post");
             Console.WriteLine("3. View single post");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Back");
             var option = Console.ReadLine();
             switch (option) {
                 case "1":
