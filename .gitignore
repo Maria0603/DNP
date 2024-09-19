@@ -1,22 +1,13 @@
 
 *.csproj
-*.cache
 /CLI/obj
 *.sln
 *.sln
-Assignment.sln
 /CLI/bin
 /Entities/bin
 /Entities/obj
 /InMemoryRepositories/bin
 /InMemoryRepositories/obj
-/Entities/obj
-/Entities/obj
 /RepositoryContracts/obj
 /RepositoryContracts/bin
-/RepositoryContracts/obj
-/Entities/obj
-/InMemoryRepositories/obj/Debug
-/Entities/obj/Debug
-/Entities/obj/Debug/net8.0
-/InMemoryRepositories/obj/Debug/net8.0
+*.cache
