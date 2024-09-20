@@ -8,6 +8,7 @@ public class CommentInMemoryRepository : BaseInMemoryRepository<Comment>,
     ICommentRepository {
     private readonly IUserRepository userRepository;
     private readonly IPostRepository postRepository;
+    
     public CommentInMemoryRepository(IUserRepository userRepository, IPostRepository postRepository) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;

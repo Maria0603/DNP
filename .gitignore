@@ -13,3 +13,5 @@
 /bin/
 /obj/
 *.cache
+/FileRepositories/obj
+/FileRepositories/bin
