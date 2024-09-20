@@ -13,7 +13,7 @@ public class PostInMemoryRepository : BaseInMemoryRepository<Post>,
 
     public PostInMemoryRepository(IUserRepository userRepository) {
         this.userRepository = userRepository;
-        
+
         items = new List<Post> {
             new Post(1, "Post 1", "Body 1", 1),
             new Post(2, "Post 2", "Body 2", 1),
