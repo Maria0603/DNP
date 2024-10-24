@@ -8,8 +8,18 @@ public class CommentFileRepository : BaseFileRepository<Comment>, ICommentReposi
     public CommentFileRepository() : base("comments.json") {
         if (!File.Exists("comments.json")) {
             var dummyComments = new List<Comment> {
-                new Comment ( 1, "First Comment", 1 , 1),
-                new Comment ( 2, "Second Comment", 2 , 2)
+                new Comment {
+                    Id = 1,
+                    Body = "First Comment",
+                    PostId = 1,
+                    UserId = 1
+                },
+                new Comment {
+                    Id = 2,
+                    Body = "Second Comment",
+                    PostId = 1,
+                    UserId = 1
+                }
             };
             string commentsJson = JsonSerializer.Serialize(dummyComments);
             File.WriteAllText("comments.json", commentsJson);
