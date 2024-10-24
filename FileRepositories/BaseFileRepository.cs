@@ -4,13 +4,8 @@ using RepositoryContracts;
 
 namespace FileRepositories;
 
-public abstract class BaseFileRepository<T> where T : class, IEntity {
-    private readonly string filePath;
-
-    protected BaseFileRepository(string filePath) {
-        this.filePath = filePath;
-    }
-
+public abstract class BaseFileRepository<T>(string filePath)
+    where T : class, IEntity {
     public async Task<T> AddAsync(T item) {
         string itemsJson = await File.ReadAllTextAsync(filePath);
         List<T> items = JsonSerializer.Deserialize<List<T>>(itemsJson) ?? new List<T>();

@@ -8,11 +8,14 @@ namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class PostsController(IPostRepository postRepository, IUserRepository userRepository) : ControllerBase {
-    private readonly IPostRepository postRepository;
 
     [HttpPost]
     public async Task<ActionResult<PostDto>> AddPost([FromBody] CreatePostDto request) {
-        Post post = new Post(request.Title, request.Body, request.UserId);
+        Post post = new Post {
+            Title = request.Title,
+            Body = request.Body,
+            UserId = request.UserId
+        };
         Post createdPost = await postRepository.AddAsync(post);
         PostDto postDto = new() {
             Id = createdPost.Id,

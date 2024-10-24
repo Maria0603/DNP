@@ -8,17 +8,20 @@ namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class UserController(IUserRepository userRepository) : ControllerBase {
-    private readonly IUserRepository userRepository;
+    
     
     [HttpPost]
     public async Task<ActionResult<UserDto>> AddUser([FromBody] CreateUserDto request) {
-        User user = new User(request.Username, request.Password);
+        User user = new User {
+            Username = request.Username,
+            Password = request.Password
+        };
         User createdUser = await userRepository.AddAsync(user);
         UserDto userDto = new() {
             Id = createdUser.Id,
             Username = createdUser.Username
         };
-        return Created($"/Users/{userDto.Id}", userDto); 
+        return Created($"/Users/{userDto.Id}", createdUser); 
     }
     
     [HttpGet]
