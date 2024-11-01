@@ -7,9 +7,9 @@ public class Comment()
     private static readonly Random random = new Random();
 
     public int Id { get; set; } 
-    public string Body { get; set; } 
-    public int PostId { get; set; } 
-    public int UserId { get; set; } 
+    public string Body { get; init; } 
+    public int PostId { get; init; } 
+    public int UserId { get; init; } 
 
     /*public Comment(string body, int postId, int userId) 
         : this(random.Next(1, int.MaxValue), body, postId, userId) {}*/
