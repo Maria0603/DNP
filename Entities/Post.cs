@@ -12,7 +12,6 @@ public class Post()
     public int UserId { get; init; } 
 
 
-
     public override string ToString() {
         return $"Post {Id}: {Title}, {Body}, UserId: {UserId}";
     }
