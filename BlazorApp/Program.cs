@@ -1,10 +1,16 @@
 using BlazorApp.Components;
+using BlazorApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+//builder.Services.AddHttpClient<HttpUserService>(client => client.BaseAddress = new Uri("https://localhost:7197"));
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7197") });
+
+builder.Services.AddScoped<IUserService, HttpUserService>();
 
 var app = builder.Build();
 

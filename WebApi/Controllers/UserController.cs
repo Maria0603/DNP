@@ -6,12 +6,13 @@ using Entities;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("User")]
 public class UserController(IUserRepository userRepository) : ControllerBase {
     
     
     [HttpPost]
     public async Task<ActionResult<UserDto>> AddUser([FromBody] CreateUserDto request) {
+        Console.WriteLine("Username: " + request.Username + "; Password: " + request.Password);
         User user = new User {
             Username = request.Username,
             Password = request.Password
@@ -21,7 +22,7 @@ public class UserController(IUserRepository userRepository) : ControllerBase {
             Id = createdUser.Id,
             Username = createdUser.Username
         };
-        return Created($"/Users/{userDto.Id}", createdUser); 
+        return Created($"/users", userDto); 
     }
     
     [HttpGet]
