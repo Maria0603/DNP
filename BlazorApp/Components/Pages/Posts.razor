@@ -34,15 +34,23 @@
 }
 
 <h3>Posts</h3>
-<ul>
-    @foreach (var post in posts)
-    {
-        <li @onclick="() => NavigateToPost(post.PostId)">
-            <h4>@post.Title</h4>
-            <p>@post.Body.Substring(0, Math.Min(post.Body.Length, 100))...</p>
-        </li>
-    }
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in posts)
+        {
+            <tr @onclick="() => NavigateToPost(post.PostId)">
+                <td>@post.Title</td>
+                <td>@post.Body.Substring(0, Math.Min(post.Body.Length, 100))...</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @code {
     private CreatePostDto newPost = new CreatePostDto();
