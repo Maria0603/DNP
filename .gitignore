@@ -23,3 +23,11 @@
 /ApiContracts/bin
 /WebApi/bin
 /BlazorApp/obj
+/BlazorApp/bin
+/BlazorApp/bin
+/BlazorApp/bin/Debug
+/BlazorApp/bin
+/RepositoryContracts/obj
+/BlazorApp/bin
+/Entities/obj
+BlazorApp/bin/Debug/net8.0/ApiContracts.dll
