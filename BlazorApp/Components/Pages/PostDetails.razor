@@ -1,0 +1,46 @@
+﻿@page "/posts/{postId:int}"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IPostService PostService
+@inject NavigationManager Navigation
+@code {
+    [Parameter] public int postId { get; set; }
+    private GetPostDto? post;
+    private CreateCommentDto newComment = new CreateCommentDto();
+
+    protected override async Task OnInitializedAsync() {
+        post = await PostService.GetPostAsync(postId);
+    }
+
+    private async Task AddComment() {
+        newComment.PostId = postId;
+        await PostService.AddCommentAsync(newComment);
+        newComment = new CreateCommentDto();
+    }
+}
+
+@if (post != null)
+{
+    <h3>@post.Title</h3>
+    <p>@post.Body</p>
+    <h4>Comments</h4>
+    <ul>
+        @foreach (var comment in post.Comments)
+        {
+            <li>@comment.Content</li>
+        }
+    </ul>
+
+    <h4>Add Comment</h4>
+    <EditForm Model="@newComment" OnValidSubmit="@AddComment">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <InputTextArea id="content" class="form-control" @bind-Value="newComment.Content" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </EditForm>
+}

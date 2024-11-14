@@ -28,7 +28,7 @@
 
 @code {
     private CreateUserDto newUser = new CreateUserDto();
-    private UserDto? createdUser;
+    private GetUserDto? createdUser;
 
     private async Task AddUser() {
        createdUser = await UserService.AddUserAsync(newUser);

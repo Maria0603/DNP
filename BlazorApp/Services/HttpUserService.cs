@@ -50,7 +50,7 @@ public class HttpUserService : IUserService {
     }*/
 
 
-    public async Task<UserDto> AddUserAsync(CreateUserDto request) {
+    public async Task<GetUserDto> AddUserAsync(CreateUserDto request) {
         HttpResponseMessage httpResponse =
             await _httpClient.PostAsJsonAsync("User", request);
         string response = await httpResponse.Content.ReadAsStringAsync();
@@ -58,17 +58,17 @@ public class HttpUserService : IUserService {
             throw new Exception(response);
         }
 
-        return JsonSerializer.Deserialize<UserDto>(response,
+        return JsonSerializer.Deserialize<GetUserDto>(response,
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
     }
 
-    public IQueryable<UserDto> GetUsers(string? username) {
-        var users = _httpClient.GetFromJsonAsync<UserDto[]>("api/users").Result;
+    public IQueryable<GetUserDto> GetUsers(string? username) {
+        var users = _httpClient.GetFromJsonAsync<GetUserDto[]>("api/users").Result;
         return users.AsQueryable();
     }
 
-    public async Task<UserDto> GetUserAsync(int id) {
-        return await _httpClient.GetFromJsonAsync<UserDto>($"api/users/{id}");
+    public async Task<GetUserDto> GetUserAsync(int id) {
+        return await _httpClient.GetFromJsonAsync<GetUserDto>($"api/users/{id}");
     }
 
     public async Task DeleteUserAsync(int id) {
