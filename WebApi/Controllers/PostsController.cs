@@ -29,31 +29,7 @@ public class PostsController(
         };
         return Created($"/Posts/{getPostDto.PostId}", getPostDto);
     }
-
-    //TODO: Fix this to correctly return the author of the post. It also has to return the comments of the post
-    //TODO: Input query parameter should be an id instead of a title.
-    /*[HttpGet]
-    public async Task<ActionResult<IEnumerable<GetPostDto>>> GetPosts(
-        [FromQuery] string? title) {
-        IEnumerable<Post> posts = postRepository.GetMany();
-
-        if (title != null) {
-            posts = posts.Where(post =>
-                post.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
-        }
-
-        IEnumerable<GetPostDto> postDtos = await Task.WhenAll(posts.Select(
-            async post => {
-                var authorId = post.UserId;
-                return new GetPostDto {
-                    PostId = post.Id,
-                    Title = post.Title,
-                    Body = post.Body,
-                    AuthorName = userRepository.GetSingleAsync(authorId).Result.Username
-                };
-            }));
-        return Ok(postDtos);
-    }*/
+    
 
     [HttpGet]
     public async Task<ActionResult<List<GetPostDto>>> GetPostsAsync(
@@ -76,21 +52,8 @@ public class PostsController(
 
         return Ok(sendDto);
     }
-
-
-    /*public async Task<ActionResult<GetPostDto>> GetPost(int id) {
-        Post post = await postRepository.GetSingleAsync(id);
-        GetPostDto getPostDto = new() {
-            PostId = post.Id,
-            Title = post.Title,
-            Body = post.Body,
-            AuthorName = userRepository.GetSingleAsync(post.UserId).Result
-                .Username
-        };
-        return Ok(getPostDto);
-    }*/
-
-
+    
+    
     [HttpGet("{id}")]
     public async Task<GetPostDto> GetPostByIdAsync(int id) {
         Post post = await postRepository.GetSingleAsync(id);
@@ -124,7 +87,6 @@ public class PostsController(
 
         return sendDto;
     }
-
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeletePost(int id) {
