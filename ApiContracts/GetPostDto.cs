@@ -1,4 +1,6 @@
-﻿namespace ApiContracts;
+﻿using System.Collections.Generic;
+
+namespace ApiContracts;
 
 public class GetPostDto {
     public int PostId { get; set; }
