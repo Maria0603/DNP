@@ -1,4 +1,9 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Entities;
 using RepositoryContracts;
 
@@ -13,16 +18,16 @@ public class CommentFileRepository : ICommentRepository {
         if (!File.Exists(_filePath)) {
             _comments = new List<Comment> {
                 new Comment {
-                    Id = 1,
+                    Id = 0,
                     Body = "First Comment",
-                    PostId = 1,
+                    PostId = 0,
                     UserId = 1
                 },
                 new Comment {
-                    Id = 2,
+                    Id = 1,
                     Body = "Second Comment",
                     PostId = 1,
-                    UserId = 1
+                    UserId = 0
                 }
             };
             SaveToFile();

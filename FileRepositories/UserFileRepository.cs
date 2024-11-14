@@ -1,4 +1,9 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Entities;
 using RepositoryContracts;
 
@@ -13,13 +18,13 @@ public class UserFileRepository : IUserRepository {
         if (!File.Exists(_filePath)) {
             _users = new List<User> {
                 new User {
-                    Id = 1,
+                    Id = 0,
                     Username = "John Doe",
                     Password = "password"
                 },
                 new User {
-                    Id = 2,
-                    Username = "Jane Doe",
+                    Id = 1,
+                    Username = "Kane Koe",
                     Password = "password"
                 }
             };

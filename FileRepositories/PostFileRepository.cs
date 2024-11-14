@@ -1,4 +1,9 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Entities;
 using RepositoryContracts;
 
@@ -13,16 +18,16 @@ public class PostFileRepository : IPostRepository {
         if (!File.Exists(_filePath)) {
             _posts = new List<Post> {
                 new Post {
-                    Id = 1,
+                    Id = 0,
                     Title = "First Post",
                     Body = "This is the first post.",
-                    UserId = 1
+                    UserId = 0
                 },
                 new Post {
-                    Id = 2,
+                    Id = 1,
                     Title = "Second Post",
                     Body = "This is the second post.",
-                    UserId = 2
+                    UserId = 1
                 }
             };
             SaveToFile();

@@ -1,4 +1,6 @@
-﻿using ApiContracts;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using ApiContracts;
 
 namespace BlazorApp.Services {
     public interface IPostService {
