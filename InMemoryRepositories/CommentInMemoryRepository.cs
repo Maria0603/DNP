@@ -32,6 +32,10 @@ public class CommentInMemoryRepository : BaseInMemoryRepository<Comment>,
         await base.UpdateAsync(comment);
     }
 
+    public IQueryable<Comment> GetCommentsForPost(int postId) {
+        throw new NotImplementedException();
+    }
+
     private void ValidateComment(Comment comment) {
         if (string.IsNullOrWhiteSpace(comment.Body)) {
             throw new InvalidOperationException("Comment body is required");

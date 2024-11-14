@@ -11,27 +11,28 @@ public class UserController(IUserRepository userRepository) : ControllerBase {
     
     
     [HttpPost]
-    public async Task<ActionResult<UserDto>> AddUser([FromBody] CreateUserDto request) {
+    public async Task<ActionResult<GetUserDto>> AddUserAsync([FromBody] CreateUserDto request) {
+        Console.WriteLine("Username: " + request.Username + "; Password: " + request.Password);
         User user = new User {
             Username = request.Username,
             Password = request.Password
         };
         User createdUser = await userRepository.AddAsync(user);
-        UserDto userDto = new() {
+        GetUserDto getUserDto = new() {
             Id = createdUser.Id,
             Username = createdUser.Username
         };
-        return Created($"/Users/{userDto.Id}", createdUser); 
+        return Created($"/Users", getUserDto); 
     }
     
     [HttpGet]
-    public ActionResult<IEnumerable<UserDto>> GetUsers([FromQuery] string? username) {
+    public ActionResult<IEnumerable<GetUserDto>> GetUsers([FromQuery] string? username) {
         IEnumerable<User> users = userRepository.GetMany();
         
         if (username != null) {
             users = users.Where(user => user.Username.Contains(username));
         }
-        IEnumerable<UserDto> userDtos = users.Select(user => new UserDto {
+        IEnumerable<GetUserDto> userDtos = users.Select(user => new GetUserDto {
             Id = user.Id,
             Username = user.Username
         });
@@ -39,13 +40,13 @@ public class UserController(IUserRepository userRepository) : ControllerBase {
     }
     
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserDto>> GetUser(int id) {
+    public async Task<ActionResult<GetUserDto>> GetUser(int id) {
         User user = await userRepository.GetSingleAsync(id);
-        UserDto userDto = new() {
+        GetUserDto getUserDto = new() {
             Id = user.Id,
             Username = user.Username
         };
-        return Ok(userDto);
+        return Ok(getUserDto);
     }
     
     [HttpDelete("{id}")]
